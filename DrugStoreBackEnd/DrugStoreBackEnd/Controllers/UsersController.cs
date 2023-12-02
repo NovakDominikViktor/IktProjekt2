@@ -5,24 +5,23 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DrugStoreBackEnd.Controllers
 {
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
-    public class AccessController : ControllerBase
+    public class UsersController : ControllerBase
     {
         private ResponeResult response;
 
-        public AccessController()
+        public UsersController()
         {
             response = new();
         }
 
         [HttpGet]
-
-        public ActionResult<IEnumerable<Accesess>> Get()
+        public ActionResult<IEnumerable<User>> Get()
         {
             using (var context = new DrugstoreContext())
             {
-                var result = context.Products.ToList();
+                var result = context.Users.ToList();
 
                 if (result == null)
                 {
@@ -43,38 +42,35 @@ namespace DrugStoreBackEnd.Controllers
         }
 
         [HttpPost]
-
-        public ActionResult<Accesess> Post(CreatedAccessDto createAccessDto)
+        public ActionResult<User> Post(CreateUserDto createUserDto)
         {
-            var access = new Accesess
+            var user = new User
             {
                
-
-                Name = createAccessDto.Name,
-
-                Description = createAccessDto.Description,
-
-                
+                UserName = createUserDto.UserName,
+                Email = createUserDto.Email,
+                PasswordHash = createUserDto.PasswordHash,
+                AccessId = createUserDto.AccessId
             };
 
             using (var context = new DrugstoreContext())
             {
-                if (access == null)
+                if (user == null)
                 {
                     response.Message = "Method Failed";
                     return BadRequest(response);
                 }
                 else
                 {
-                    context.Accesesses.Add(access);
+                    context.Users.Add(user);
 
                     context.SaveChanges();
 
-                    response.Result = access;
+                    response.Result = user;
 
                     response.IsSuccess = true;
 
-                    response.Message = "Access level added";
+                    response.Message = "User added";
 
                     return StatusCode(201, response);
                 }
@@ -82,32 +78,29 @@ namespace DrugStoreBackEnd.Controllers
         }
 
         [HttpPut("{id}")]
-
-        public ActionResult<Accesess> put(int id, UpdateAccessDto updateAccessDto)
+        public ActionResult<User> Put(int id, UpdateUserDto updateUserDto)
         {
             using (var context = new DrugstoreContext())
             {
-                var existingAccessLevel = context.Accesesses.FirstOrDefault(x => x.Id == id);
+                var existingUser = context.Users.FirstOrDefault(x => x.Id == id);
 
-                if (existingAccessLevel == null)
+                if (existingUser == null)
                 {
                     response.Message = "Update failed";
                     return BadRequest(response);
                 }
                 else
                 {
-                    existingAccessLevel.Id = updateAccessDto.Id;
+                    existingUser.UserName = updateUserDto.UserName;
+                    existingUser.Email = updateUserDto.Email;
+                    existingUser.PasswordHash = updateUserDto.PasswordHash;
+                    existingUser.AccessId = updateUserDto.AccessId;
 
-                    existingAccessLevel.Name = updateAccessDto.Name;
-
-                    existingAccessLevel.Description = updateAccessDto.Description;
-
-               
-                    context.Accesesses.Update(existingAccessLevel);
+                    context.Users.Update(existingUser);
 
                     context.SaveChanges();
 
-                    response.Result = existingAccessLevel;
+                    response.Result = existingUser;
 
                     response.IsSuccess = true;
 
@@ -118,13 +111,12 @@ namespace DrugStoreBackEnd.Controllers
             }
         }
 
-        [HttpDelete("{Id}")]
-
-        public ActionResult<Accesess> Delete(int id)
+        [HttpDelete("{id}")]
+        public ActionResult<User> Delete(int id)
         {
             using (var context = new DrugstoreContext())
             {
-                var result = context.Accesesses.FirstOrDefault(x => x.Id == id);
+                var result = context.Users.FirstOrDefault(x => x.Id == id);
 
                 if (result == null)
                 {
@@ -134,7 +126,7 @@ namespace DrugStoreBackEnd.Controllers
                 }
                 else
                 {
-                    context.Accesesses.Remove(result);
+                    context.Users.Remove(result);
 
                     context.SaveChanges();
 

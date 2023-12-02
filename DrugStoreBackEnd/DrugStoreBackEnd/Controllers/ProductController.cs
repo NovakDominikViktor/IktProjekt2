@@ -20,7 +20,7 @@ namespace DrugStoreBackEnd.Controllers
 
         public ActionResult<IEnumerable<Product>> Get()
         {
-            using (var context = new DrugStoreContext())
+            using (var context = new DrugstoreContext())
             {
                 var result = context.Products.ToList();
 
@@ -65,7 +65,7 @@ namespace DrugStoreBackEnd.Controllers
                 CreatedTime = DateTime.UtcNow
             };
 
-            using(var context = new DrugStoreContext())
+            using(var context = new DrugstoreContext())
             {
                 if(product == null)
                 {
@@ -93,7 +93,7 @@ namespace DrugStoreBackEnd.Controllers
 
         public ActionResult<Product> put(Guid id, UpdateProductDto updateProductDto)
         {
-            using(var context = new DrugStoreContext())
+            using(var context = new DrugstoreContext())
             {
                 var existingProduct = context.Products.FirstOrDefault(x => x.Id == id);
 
@@ -135,7 +135,7 @@ namespace DrugStoreBackEnd.Controllers
 
         public ActionResult<Product> Delete (Guid id)
         {
-            using(var context = new DrugStoreContext())
+            using(var context = new DrugstoreContext())
             {
                 var result = context.Products.FirstOrDefault(x => x.Id == id);
 

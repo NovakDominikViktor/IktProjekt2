@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DrugStoreBackEnd.Models;
 
-public partial class DrugStoreContext : DbContext
+public partial class DrugstoreContext : DbContext
 {
-    public DrugStoreContext()
+    public DrugstoreContext()
     {
     }
 
-    public DrugStoreContext(DbContextOptions<DrugStoreContext> options)
+    public DrugstoreContext(DbContextOptions<DrugstoreContext> options)
         : base(options)
     {
     }
@@ -19,9 +19,11 @@ public partial class DrugStoreContext : DbContext
 
     public virtual DbSet<Product> Products { get; set; }
 
+    public virtual DbSet<User> Users { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseMySQL("SERVER=localhost;PORT=3306;DATABASE=DrugStore;USER=root;PASSWORD=;SSL MODE=none;");
+        => optionsBuilder.UseMySQL("SERVER=localhost;PORT=3306;DATABASE=drugstore;USER=root;PASSWORD=;SSL MODE=none;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -57,6 +59,25 @@ public partial class DrugStoreContext : DbContext
             entity.HasOne(d => d.Access).WithMany(p => p.Products)
                 .HasForeignKey(d => d.AccessId)
                 .HasConstraintName("fk_access_id");
+        });
+
+        modelBuilder.Entity<User>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
+
+            entity.ToTable("users");
+
+            entity.HasIndex(e => e.AccessId, "AccessId");
+
+            entity.Property(e => e.Id).HasColumnType("int(11)");
+            entity.Property(e => e.AccessId).HasColumnType("int(11)");
+            entity.Property(e => e.Email).HasMaxLength(256);
+            entity.Property(e => e.PasswordHash).HasMaxLength(256);
+            entity.Property(e => e.UserName).HasMaxLength(256);
+
+            entity.HasOne(d => d.Access).WithMany(p => p.Users)
+                .HasForeignKey(d => d.AccessId)
+                .HasConstraintName("users_ibfk_1");
         });
 
         OnModelCreatingPartial(modelBuilder);
