@@ -13,8 +13,6 @@ public partial class Product
 
     public string Instructions { get; set; } = null!;
 
-    public string Company { get; set; } = null!;
-
     public int AccessId { get; set; }
 
     public decimal Price { get; set; }

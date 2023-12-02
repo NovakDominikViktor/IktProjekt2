@@ -56,8 +56,6 @@ namespace DrugStoreBackEnd.Controllers
 
                 Instructions = createProductDto.Instructions,
 
-                Company = createProductDto.Company,
-
                 AccessId = createProductDto.AccessId,
 
                 Price = createProductDto.Price,
@@ -109,8 +107,6 @@ namespace DrugStoreBackEnd.Controllers
                     existingProduct.ProductBrand = updateProductDto.ProductBrand;
 
                     existingProduct.Instructions = updateProductDto.Instructions;
-
-                    existingProduct.Company = updateProductDto.Company;
 
                     existingProduct.AccessId = updateProductDto.AccessId;
 

@@ -47,7 +47,6 @@ public partial class DrugstoreContext : DbContext
             entity.HasIndex(e => e.AccessId, "fk_access_id");
 
             entity.Property(e => e.AccessId).HasColumnType("int(11)");
-            entity.Property(e => e.Company).HasMaxLength(60);
             entity.Property(e => e.CreatedTime)
                 .HasDefaultValueSql("'current_timestamp()'")
                 .HasColumnType("timestamp");
