@@ -1,30 +1,30 @@
-﻿using DrugStoreBackEnd.Models;
+﻿using DrugStoreBackEnd.Models.DTOs;
+using DrugStoreBackEnd.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using DrugStoreBackEnd.Models.DTOs;
 
 namespace DrugStoreBackEnd.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class ProductController : ControllerBase
+    public class AccessController : ControllerBase
     {
         private ResponeResult response;
 
-        public ProductController()
+        public AccessController()
         {
             response = new();
         }
 
         [HttpGet]
 
-        public ActionResult<IEnumerable<Product>> Get()
+        public ActionResult<IEnumerable<Accesess>> Get()
         {
             using (var context = new DrugStoreContext())
             {
                 var result = context.Products.ToList();
 
-                if(result == null)
+                if (result == null)
                 {
                     response.Message = "Method failed";
                     return BadRequest(response);
@@ -44,45 +44,37 @@ namespace DrugStoreBackEnd.Controllers
 
         [HttpPost]
 
-        public ActionResult<Product> Post(CreatedProductDto createProductDto)
+        public ActionResult<Accesess> Post(CreatedAccessDto createAccessDto)
         {
-            var product = new Product
+            var access = new Accesess
             {
-                Id = Guid.NewGuid(),
+                Id = createAccessDto.Id,
 
-                ProductName = createProductDto.ProductName,
+                Name = createAccessDto.Name,
 
-                ProductBrand = createProductDto.ProductBrand,
+                Description = createAccessDto.Description,
 
-                Instructions = createProductDto.Instructions,
-
-                Company = createProductDto.Company,
-
-                AccessId = createProductDto.AccessId,
-
-                Price = createProductDto.Price,
-
-                CreatedTime = DateTime.UtcNow
+                
             };
 
-            using(var context = new DrugStoreContext())
+            using (var context = new DrugStoreContext())
             {
-                if(product == null)
+                if (access == null)
                 {
                     response.Message = "Method Failed";
                     return BadRequest(response);
                 }
                 else
                 {
-                    context.Products.Add(product);
+                    context.Accesesses.Add(access);
 
                     context.SaveChanges();
 
-                    response.Result = product;
+                    response.Result = access;
 
                     response.IsSuccess = true;
 
-                    response.Message = "Product added";
+                    response.Message = "Access level added";
 
                     return StatusCode(201, response);
                 }
@@ -91,36 +83,31 @@ namespace DrugStoreBackEnd.Controllers
 
         [HttpPut("{id}")]
 
-        public ActionResult<Product> put(Guid id, UpdateProductDto updateProductDto)
+        public ActionResult<Accesess> put(int id, UpdateAccessDto updateAccessDto)
         {
-            using(var context = new DrugStoreContext())
+            using (var context = new DrugStoreContext())
             {
-                var existingProduct = context.Products.FirstOrDefault(x => x.Id == id);
+                var existingAccessLevel = context.Accesesses.FirstOrDefault(x => x.Id == id);
 
-                if(existingProduct == null)
+                if (existingAccessLevel == null)
                 {
                     response.Message = "Update failed";
                     return BadRequest(response);
                 }
                 else
                 {
-                    existingProduct.ProductName = updateProductDto.ProductName;
+                    existingAccessLevel.Id = updateAccessDto.Id;
 
-                    existingProduct.ProductBrand = updateProductDto.ProductBrand;
+                    existingAccessLevel.Name = updateAccessDto.Name;
 
-                    existingProduct.Instructions = updateProductDto.Instructions;
+                    existingAccessLevel.Description = updateAccessDto.Description;
 
-                    existingProduct.Company = updateProductDto.Company;
-
-                    existingProduct.AccessId = updateProductDto.AccessId;
-
-                    existingProduct.Price = updateProductDto.Price;
-
-                    context.Products.Update(existingProduct);
+               
+                    context.Accesesses.Update(existingAccessLevel);
 
                     context.SaveChanges();
 
-                    response.Result = existingProduct;
+                    response.Result = existingAccessLevel;
 
                     response.IsSuccess = true;
 
@@ -133,21 +120,21 @@ namespace DrugStoreBackEnd.Controllers
 
         [HttpDelete("{Id}")]
 
-        public ActionResult<Product> Delete (Guid id)
+        public ActionResult<Accesess> Delete(int id)
         {
-            using(var context = new DrugStoreContext())
+            using (var context = new DrugStoreContext())
             {
-                var result = context.Products.FirstOrDefault(x => x.Id == id);
+                var result = context.Accesesses.FirstOrDefault(x => x.Id == id);
 
-                if(result == null)
+                if (result == null)
                 {
                     response.Message = "DeleteFailed";
-                    
+
                     return BadRequest(response);
                 }
                 else
                 {
-                    context.Products.Remove(result);
+                    context.Accesesses.Remove(result);
 
                     context.SaveChanges();
 
