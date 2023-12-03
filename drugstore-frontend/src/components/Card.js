@@ -1,6 +1,6 @@
-// Card.js
 import React from 'react';
 import DeleteProduct from '../hooks/DeleteProducts';
+import UpdateProduct from '../hooks/UpdateProducts';  
 import './card.css';
 
 function Card({ id, productName, productBrand, instructions, price, updateCardState }) {
@@ -12,6 +12,16 @@ function Card({ id, productName, productBrand, instructions, price, updateCardSt
         <p className="card-text">Brand: {productBrand}</p>
         <p className="card-text">Instructions: {instructions}</p>
         <p className="card-text">Price: ${price}</p>
+
+        {/* Include the UpdateProduct component with the necessary props */}
+        <UpdateProduct
+          id={id}
+          productName={productName}
+          productBrand={productBrand}
+          instructions={instructions}
+          price={price}
+          updateProductState={updateCardState}
+        />
 
         <DeleteProduct id={id} updateProductState={updateCardState} />
       </div>

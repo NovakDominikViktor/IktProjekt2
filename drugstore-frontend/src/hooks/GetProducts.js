@@ -11,7 +11,7 @@ export default function GetProducts(props){
         fetch(url)
           .then((res) => res.json())
           .then((data) => {
-            console.log(data.result); // Log the result to the console
+            console.log(data.result);
             setProduct(data.result);
           })
           .catch((error) => console.error('Error fetching products:', error));
