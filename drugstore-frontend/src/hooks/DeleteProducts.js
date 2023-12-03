@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
+import DeleteConfirmation from '../components/DeleteConfirmation';
 
 const DeleteProduct = ({ id, updateProductState }) => {
+  const [showConfirmation, setShowConfirmation] = useState(false);
+
   const handleDelete = async () => {
     // Call the API to delete the product with the given id
     try {
@@ -12,14 +15,21 @@ const DeleteProduct = ({ id, updateProductState }) => {
       updateProductState();
     } catch (error) {
       console.error('Error deleting product:', error);
+    } finally {
+      // Close the confirmation dialog
+      setShowConfirmation(false);
     }
   };
 
   return (
     <div>
-      <button className="btn btn-danger m-2" onClick={handleDelete}>
+      <button className="btn btn-danger m-2" onClick={() => setShowConfirmation(true)}>
         Delete
       </button>
+
+      {showConfirmation && (
+        <DeleteConfirmation onConfirm={handleDelete} onCancel={() => setShowConfirmation(false)} />
+      )}
     </div>
   );
 };
