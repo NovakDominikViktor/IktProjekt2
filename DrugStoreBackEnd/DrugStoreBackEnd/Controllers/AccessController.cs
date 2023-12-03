@@ -48,7 +48,7 @@ namespace DrugStoreBackEnd.Controllers
         {
             var access = new Accesess
             {
-               
+                Id = createAccessDto.Id,
 
                 Name = createAccessDto.Name,
 

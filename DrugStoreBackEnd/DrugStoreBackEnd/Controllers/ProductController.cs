@@ -127,7 +127,7 @@ namespace DrugStoreBackEnd.Controllers
             }
         }
 
-        [HttpDelete("{Id}")]
+        [HttpDelete("{id}")]
 
         public ActionResult<Product> Delete (Guid id)
         {

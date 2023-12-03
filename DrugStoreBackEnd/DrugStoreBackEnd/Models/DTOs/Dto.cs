@@ -8,7 +8,7 @@
 
     public record AccessDto(int Id, string Name, string Description);
 
-    public record CreatedAccessDto(string Name, string Description);
+    public record CreatedAccessDto(int Id, string Name, string Description);
 
     public record UpdateAccessDto(int Id, string Name, string Description);
 

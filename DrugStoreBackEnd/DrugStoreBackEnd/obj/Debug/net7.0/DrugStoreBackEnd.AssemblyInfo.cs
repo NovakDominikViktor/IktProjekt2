@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DrugStoreBackEnd")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+572b1805e72d4173133183c8fe96ea00b6bf57ef")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c5b4e965cb620c89e19a39455e9ecac00c76ec2e")]
 [assembly: System.Reflection.AssemblyProductAttribute("DrugStoreBackEnd")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DrugStoreBackEnd")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
