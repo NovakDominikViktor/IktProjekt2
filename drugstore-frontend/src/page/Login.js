@@ -22,7 +22,7 @@ const Login = ({ handleLoginSuccess }) => {
         console.log(user);
         if (user) {
           setMessage('Login successful');
-          handleLoginSuccess(user.userName, user.id, user.accessId);
+          handleLoginSuccess(user.userName, user.id, user.accessId, user.email, user.passwordHash);
         } else {
           setMessage('Invalid username, email, or password');
         }
