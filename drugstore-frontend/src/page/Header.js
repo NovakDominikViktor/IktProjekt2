@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 function Header({ loggedInUser, onLogout }) {
   const handleLogout = () => {
     
+    onLogout();
     window.location.reload();
   };
 
@@ -15,11 +16,12 @@ function Header({ loggedInUser, onLogout }) {
         {loggedInUser ? (
           <>
             <span className="navbar-text mx-3">Welcome, {loggedInUser.username}!</span>
-            <Link to="/browse" className="navbar-brand">Browse</Link>
-            <Link to="#" className="navbar-brand" onClick={handleLogout}>Logout</Link>
-            {loggedInUser.AccessId === 1 && (
+            <Link to="/browse" className="navbar-brand">Valami</Link>
+            {console.log(loggedInUser)}
+            {loggedInUser.accessId === 1 && (
               <Link to="/premium" className="navbar-brand">Become Premium</Link>
             )}
+            <Link to="#" className="navbar-brand" onClick={handleLogout}>Logout</Link>
           </>
         ) : (
           <>

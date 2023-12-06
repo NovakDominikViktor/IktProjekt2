@@ -17,7 +17,7 @@ function Register({ handleRegisterSuccess }) {
           userName: username,
           email: email,
           passwordHash: password,
-          accessId: 1, // Set default accessId for registered users
+          accessId: 1, 
         }),
       });
 

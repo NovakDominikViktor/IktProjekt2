@@ -19,10 +19,10 @@ const Login = ({ handleLoginSuccess }) => {
         const user = data.result.find(
           (u) => (u.userName === usernameOrEmail || u.email === usernameOrEmail) && u.passwordHash === password
         );
-
+        console.log(user);
         if (user) {
           setMessage('Login successful');
-          handleLoginSuccess(user.userName, user.id);
+          handleLoginSuccess(user.userName, user.id, user.accessId);
         } else {
           setMessage('Invalid username, email, or password');
         }
@@ -33,6 +33,7 @@ const Login = ({ handleLoginSuccess }) => {
       console.error('Error during login:', error);
       setMessage('An unexpected error occurred');
     }
+   
   };
 
   return (
