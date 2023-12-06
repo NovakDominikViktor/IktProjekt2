@@ -2,6 +2,7 @@
 using DrugStoreBackEnd.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace DrugStoreBackEnd.Controllers
 {
@@ -40,6 +41,34 @@ namespace DrugStoreBackEnd.Controllers
                 }
             }
         }
+
+        [HttpGet("{id}")]
+        public ActionResult<User> GetById(int id)
+        {
+            using (var context = new DrugstoreContext())
+            {
+                var result = context.Users
+                    .Include(u => u.Access)
+                    .FirstOrDefault(x => x.Id == id);
+
+                if (result == null)
+                {
+                    response.Message = "Method failed";
+                    return BadRequest(response);
+                }
+                else
+                {
+                    response.Result = result;
+
+                    response.IsSuccess = true;
+
+                    response.Message = "Method success";
+
+                    return Ok(response);
+                }
+            }
+        }
+
 
         [HttpPost]
         public ActionResult<User> Post(CreateUserDto createUserDto)

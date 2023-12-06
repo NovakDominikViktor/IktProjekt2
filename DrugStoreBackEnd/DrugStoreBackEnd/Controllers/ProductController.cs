@@ -42,6 +42,33 @@ namespace DrugStoreBackEnd.Controllers
             }
         }
 
+        [HttpGet("{id}")]
+
+        public ActionResult<Accesess> GetById(Guid id)
+        {
+            using (var context = new DrugstoreContext())
+            {
+                var result = context.Products.FirstOrDefault(x => x.Id == id);
+
+                if (result == null)
+                {
+                    response.Message = "Method failed";
+
+                    return BadRequest(response);
+                }
+                else
+                {
+                    response.Result = result;
+
+                    response.IsSuccess = true;
+
+                    response.Message = "Method success";
+
+                    return Ok(response);
+                }
+            }
+        }
+
         [HttpPost]
 
         public ActionResult<Product> Post(CreatedProductDto createProductDto)

@@ -42,6 +42,33 @@ namespace DrugStoreBackEnd.Controllers
             }
         }
 
+        [HttpGet("{id}")]
+
+        public ActionResult<Accesess> GetById(int id)
+        {
+            using(var context = new DrugstoreContext())
+            {
+                var result = context.Accesesses.FirstOrDefault(x => x.Id == id);
+
+                if(result == null)
+                {
+                    response.Message = "Method failed";
+
+                    return BadRequest(response);
+                }
+                else
+                {
+                    response.Result = result;
+
+                    response.IsSuccess = true;
+
+                    response.Message = "Method success";
+
+                    return Ok(response);
+                }
+            }
+        }
+
         [HttpPost]
 
         public ActionResult<Accesess> Post(CreatedAccessDto createAccessDto)
@@ -118,8 +145,7 @@ namespace DrugStoreBackEnd.Controllers
             }
         }
 
-        [HttpDelete("{Id}")]
-
+        [HttpDelete("{id}")]
         public ActionResult<Accesess> Delete(int id)
         {
             using (var context = new DrugstoreContext())
@@ -129,19 +155,15 @@ namespace DrugStoreBackEnd.Controllers
                 if (result == null)
                 {
                     response.Message = "DeleteFailed";
-
                     return BadRequest(response);
                 }
                 else
                 {
                     context.Accesesses.Remove(result);
-
                     context.SaveChanges();
 
                     response.Result = result;
-
                     response.IsSuccess = true;
-
                     response.Message = "Delete success";
 
                     return Ok(response);
