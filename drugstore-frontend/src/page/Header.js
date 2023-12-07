@@ -18,7 +18,7 @@ function Header({ loggedInUser, onLogout }) {
             <span className="navbar-text mx-3">Welcome, {loggedInUser.username}!</span>
             <Link to="/browse" className="navbar-brand">Browse</Link>
             {console.log(loggedInUser)}
-            {loggedInUser.accessId === 1 && (
+            {loggedInUser.accessId >= 1 && (
               <Link to="/profile" className="navbar-brand">Profile</Link>
             )}
             <Link to="#" className="navbar-brand" onClick={handleLogout}>Logout</Link>
