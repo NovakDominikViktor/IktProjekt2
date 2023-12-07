@@ -62,19 +62,21 @@ const Profile = ({ user, onTogglePremium }) => {
         <strong>Email:</strong> {user.email}
       </p>
       <p>
-        <strong>Access Level:</strong> {isPremium ? 'Premium' : 'Standard'}
+        <strong>Access Level:</strong> {user.accessId === 3 ? 'Admin' : (isPremium ? 'Premium' : 'Standard')}
       </p>
 
-      {(
-        <button onClick={handleBecomePremium} disabled={isPremium}>
-          Become Premium
-        </button>
-      )}
-      {user.accessId === 2 && (
-        <button onClick={handleCancelPremium} disabled={!isPremium}>
-          Cancel Premium
-        </button>
-      )}
+      {(user.accessId === 1 || user.accessId === 2 || user.accessId === 3) && (
+  <>
+    <button onClick={handleBecomePremium} disabled={user.accessId === 3 || isPremium}>
+      Become Premium
+    </button>
+    <button onClick={handleCancelPremium} disabled={user.accessId === 3 || !isPremium}>
+      Cancel Premium
+    </button>
+  </>
+)}
+
+      
     </div>
   );
 };
