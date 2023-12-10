@@ -4,7 +4,6 @@ import DeleteConfirmation from '../components/DeleteConfirmation';
 const DeleteProduct = ({ id, updateProductState, loggedInUser }) => {
   const [showConfirmation, setShowConfirmation] = useState(false);
 
-
   const handleDelete = async () => {
     // Call the API to delete the product with the given id
     try {
@@ -24,12 +23,20 @@ const DeleteProduct = ({ id, updateProductState, loggedInUser }) => {
 
   return (
     <div>
-      <button className="btn btn-danger m-2" onClick={() => setShowConfirmation(true)} disabled={loggedInUser.accessId !== 3}>
+      <button
+        className="btn btn-danger m-2"
+        onClick={() => setShowConfirmation(true)}
+        disabled={loggedInUser.accessId !== 3}
+      >
         Delete
       </button>
 
       {showConfirmation && (
-        <DeleteConfirmation onConfirm={handleDelete} onCancel={() => setShowConfirmation(false)} />
+        <DeleteConfirmation
+          onConfirm={handleDelete}
+          onCancel={() => setShowConfirmation(false)}
+          userAccessId={loggedInUser.accessId}
+        />
       )}
     </div>
   );
