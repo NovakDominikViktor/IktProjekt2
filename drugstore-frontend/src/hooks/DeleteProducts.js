@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import DeleteConfirmation from '../components/DeleteConfirmation';
 
-const DeleteProduct = ({ id, updateProductState }) => {
+const DeleteProduct = ({ id, updateProductState, loggedInUser }) => {
   const [showConfirmation, setShowConfirmation] = useState(false);
+
 
   const handleDelete = async () => {
     // Call the API to delete the product with the given id
@@ -23,7 +24,7 @@ const DeleteProduct = ({ id, updateProductState }) => {
 
   return (
     <div>
-      <button className="btn btn-danger m-2" onClick={() => setShowConfirmation(true)}>
+      <button className="btn btn-danger m-2" onClick={() => setShowConfirmation(true)} disabled={loggedInUser.accessId !== 3}>
         Delete
       </button>
 

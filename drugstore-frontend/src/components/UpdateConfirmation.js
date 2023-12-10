@@ -1,7 +1,7 @@
 // UpdateConfirmation.js
 import React from 'react';
 
-const UpdateConfirmation = ({ fields, onFieldChange, onConfirm, onCancel }) => {
+const UpdateConfirmation = ({ fields, onFieldChange, onConfirm, onCancel, userAccessId }) => {
   return (
     <div className="update-confirmation">
       <p>Update the following fields:</p>
@@ -37,7 +37,7 @@ const UpdateConfirmation = ({ fields, onFieldChange, onConfirm, onCancel }) => {
           onChange={(e) => onFieldChange('price', e.target.value)}
         />
       </label>
-      <button onClick={onConfirm} className="btn btn-primary">
+      <button onClick={onConfirm} className="btn btn-primary" disabled={userAccessId !== 3}>
         Yes, Update
       </button>
       <button onClick={onCancel} className="btn btn-secondary">

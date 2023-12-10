@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import UpdateConfirmation from '../components/UpdateConfirmation';
 
-const UpdateProduct = ({ id, productName, productBrand, instructions, price, updateProductState }) => {
+const UpdateProduct = ({ id, productName, productBrand, instructions, price, updateProductState, loggedInUser }) => {
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [updatedFields, setUpdatedFields] = useState({
     productName,
@@ -14,12 +14,17 @@ const UpdateProduct = ({ id, productName, productBrand, instructions, price, upd
   const handleUpdate = async () => {
     // Call the API to update the product with the given id
     try {
+      if (loggedInUser.accessId !== 3) {
+        console.log('User is not an admin. Update is disabled.');
+        return;
+      }
       const response = await fetch(`https://localhost:7227/Product/${id}`, {
         method: 'PUT', // Use the appropriate HTTP method for updating
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(updatedFields),
+        
       });
   
       if (response.ok) {
@@ -43,7 +48,7 @@ const UpdateProduct = ({ id, productName, productBrand, instructions, price, upd
 
   return (
     <div>
-      <button className="btn btn-primary m-2" onClick={() => setShowConfirmation(true)}>
+      <button className="btn btn-primary m-2" onClick={() => setShowConfirmation(true)} disabled={loggedInUser.accessId !== 3}>
         Update
       </button>
 
@@ -60,4 +65,3 @@ const UpdateProduct = ({ id, productName, productBrand, instructions, price, upd
 };
 
 export default UpdateProduct;
-

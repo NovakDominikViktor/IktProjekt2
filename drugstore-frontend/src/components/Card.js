@@ -3,8 +3,9 @@ import DeleteProduct from '../hooks/DeleteProducts';
 import UpdateProduct from '../hooks/UpdateProducts';  
 import './card.css';
 
-function Card({ id, productName, productBrand, instructions, price, updateCardState }) {
-  
+function Card({ id, productName, productBrand, instructions, price, updateCardState, loggedInUser }) {
+  const isUserLoggedIn = loggedInUser && loggedInUser.accessId !== undefined;
+
   return (
     <div className="card width m-1 p-1 d-inline-block move shadow-5 grow" key={id}>
       <div className="card-body">
@@ -14,16 +15,26 @@ function Card({ id, productName, productBrand, instructions, price, updateCardSt
         <p className="card-text">Price: ${price}</p>
 
         {/* Include the UpdateProduct component with the necessary props */}
-        <UpdateProduct
-          id={id}
-          productName={productName}
-          productBrand={productBrand}
-          instructions={instructions}
-          price={price}
-          updateProductState={updateCardState}
-        />
+        {isUserLoggedIn && (
+          <UpdateProduct
+            id={id}
+            productName={productName}
+            productBrand={productBrand}
+            instructions={instructions}
+            price={price}
+            updateProductState={updateCardState}
+            loggedInUser={loggedInUser}
+          />
+        )}
 
-        <DeleteProduct id={id} updateProductState={updateCardState} />
+        {isUserLoggedIn && (
+          <DeleteProduct
+            id={id}
+            updateProductState={updateCardState}
+            loggedInUser={loggedInUser}
+            disabled={!isUserLoggedIn || (isUserLoggedIn && loggedInUser.accessId !== 3)}
+          />
+        )}
       </div>
     </div>
   );

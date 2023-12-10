@@ -34,7 +34,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login handleLoginSuccess={handleLoginSuccess} />} />
-          <Route path="/browse" element={<Browse />} />
+          <Route
+            path="/browse"
+            element={<Browse loggedInUser={loggedInUser} />} // loggedInUser prop átadása a Browse komponensnek
+          />
           <Route
             path="/register"
             element={<Register handleRegisterSuccess={handleRegisterSuccess} />}
