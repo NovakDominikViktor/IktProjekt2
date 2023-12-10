@@ -17,7 +17,7 @@ function Browse({ loggedInUser }) {
         <div className="container">
           <div className="row">
             <div className="col-md-9">
-              <CreateProducts stateChange={handleCreateProductsStateChange} />
+              <CreateProducts stateChange={handleCreateProductsStateChange} loggedInUser={loggedInUser} />
     
               {/* loggedInUser prop átadása a GetProducts komponensnek */}
               <GetProducts stateChange={handleCountState} count={count} loggedInUser={loggedInUser} />
