@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function Register({ handleRegisterSuccess }) {
+const Register = ({ handleRegisterSuccess }) => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -17,7 +17,7 @@ function Register({ handleRegisterSuccess }) {
           userName: username,
           email: email,
           passwordHash: password,
-          accessId: 1, 
+          accessId: 1,
         }),
       });
 
@@ -34,27 +34,56 @@ function Register({ handleRegisterSuccess }) {
   };
 
   return (
-    <div>
-      <h2>Register</h2>
-      <label>
-        Username:
-        <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
-      </label>
-      <br />
-      <label>
-        Email:
-        <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
-      </label>
-      <br />
-      <label>
-        Password:
-        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-      </label>
-      <br />
-      <button onClick={handleRegister}>Register</button>
-      <p>{message}</p>
+    <div className="container mt-5">
+      <div className="col-md-6 offset-md-3">
+        <h2>Register</h2>
+        <div className="mb-3">
+          <label htmlFor="username" className="form-label">
+            Username:
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            id="username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="email" className="form-label">
+            Email:
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="password" className="form-label">
+            Password:
+          </label>
+          <input
+            type="password"
+            className="form-control"
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        <button
+          type="button"
+          className="btn btn-primary"
+          onClick={handleRegister}
+        >
+          Register
+        </button>
+        <p className="mt-3">{message}</p>
+      </div>
     </div>
   );
-}
+};
 
 export default Register;

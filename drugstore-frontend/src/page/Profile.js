@@ -53,30 +53,40 @@ const Profile = ({ user, onTogglePremium }) => {
   };
 
   return (
-    <div>
+    <div className="container mt-5">
       <h2>Profile</h2>
-      <p>
-        <strong>Username:</strong> {user.username}
-      </p>
-      <p>
-        <strong>Email:</strong> {user.email}
-      </p>
-      <p>
-        <strong>Access Level:</strong> {user.accessId === 3 ? 'Admin' : (isPremium ? 'Premium' : 'Standard')}
-      </p>
+      <div className="card">
+        <div className="card-body">
+          <p className="card-text">
+            <strong>Username:</strong> {user.username}
+          </p>
+          <p className="card-text">
+            <strong>Email:</strong> {user.email}
+          </p>
+          <p className="card-text">
+            <strong>Access Level:</strong> {user.accessId === 3 ? 'Admin' : (isPremium ? 'Premium' : 'Standard')}
+          </p>
 
-      {(user.accessId === 1 || user.accessId === 2 || user.accessId === 3) && (
-  <>
-    <button onClick={handleBecomePremium} disabled={user.accessId === 3 || isPremium}>
-      Become Premium
-    </button>
-    <button onClick={handleCancelPremium} disabled={user.accessId === 3 || !isPremium}>
-      Cancel Premium
-    </button>
-  </>
-)}
-
-      
+          {(user.accessId === 1 || user.accessId === 2 || user.accessId === 3) && (
+            <>
+              <button
+                className="btn btn-primary me-2"
+                onClick={handleBecomePremium}
+                disabled={user.accessId === 3 || isPremium}
+              >
+                Become Premium
+              </button>
+              <button
+                className="btn btn-secondary"
+                onClick={handleCancelPremium}
+                disabled={user.accessId === 3 || !isPremium}
+              >
+                Cancel Premium
+              </button>
+            </>
+          )}
+        </div>
+      </div>
     </div>
   );
 };

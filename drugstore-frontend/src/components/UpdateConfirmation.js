@@ -37,6 +37,8 @@ const UpdateConfirmation = ({ fields, onFieldChange, onConfirm, onCancel, userAc
           onChange={(e) => onFieldChange('price', e.target.value)}
         />
       </label>
+      <br/>
+      <br/>
       <button
         onClick={onConfirm}
         className="btn btn-primary"
