@@ -19,5 +19,7 @@ public partial class Product
 
     public DateTime CreatedTime { get; set; }
 
+    public string ImageUrl { get; set; } = null!;
+
     public virtual Accesess Access { get; set; } = null!;
 }

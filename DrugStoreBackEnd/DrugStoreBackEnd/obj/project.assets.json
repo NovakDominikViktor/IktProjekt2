@@ -3145,23 +3145,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\novak\\.nuget\\packages\\": {},
+    "C:\\Users\\ndominikviktor\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\novak\\Desktop\\Ikt\\IktProjekt2\\DrugStoreBackEnd\\DrugStoreBackEnd\\DrugStoreBackEnd.csproj",
+      "projectUniqueName": "C:\\Users\\ndominikviktor\\Desktop\\Ikt\\IktProjekt2\\DrugStoreBackEnd\\DrugStoreBackEnd\\DrugStoreBackEnd.csproj",
       "projectName": "DrugStoreBackEnd",
-      "projectPath": "C:\\Users\\novak\\Desktop\\Ikt\\IktProjekt2\\DrugStoreBackEnd\\DrugStoreBackEnd\\DrugStoreBackEnd.csproj",
-      "packagesPath": "C:\\Users\\novak\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\novak\\Desktop\\Ikt\\IktProjekt2\\DrugStoreBackEnd\\DrugStoreBackEnd\\obj\\",
+      "projectPath": "C:\\Users\\ndominikviktor\\Desktop\\Ikt\\IktProjekt2\\DrugStoreBackEnd\\DrugStoreBackEnd\\DrugStoreBackEnd.csproj",
+      "packagesPath": "C:\\Users\\ndominikviktor\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ndominikviktor\\Desktop\\Ikt\\IktProjekt2\\DrugStoreBackEnd\\DrugStoreBackEnd\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\novak\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ndominikviktor\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -3170,6 +3170,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\sdk\\7.0.304\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -3238,7 +3239,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
       }
     }
   }

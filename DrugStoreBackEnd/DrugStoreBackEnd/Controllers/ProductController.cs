@@ -20,7 +20,7 @@ namespace DrugStoreBackEnd.Controllers
 
         public ActionResult<IEnumerable<Product>> Get()
         {
-            using (var context = new DrugstoreContext())
+            using (var context = new DrugStoreContext())
             {
                 var result = context.Products.ToList();
 
@@ -46,7 +46,7 @@ namespace DrugStoreBackEnd.Controllers
 
         public ActionResult<Accesess> GetById(Guid id)
         {
-            using (var context = new DrugstoreContext())
+            using (var context = new DrugStoreContext())
             {
                 var result = context.Products.FirstOrDefault(x => x.Id == id);
 
@@ -87,10 +87,12 @@ namespace DrugStoreBackEnd.Controllers
 
                 Price = createProductDto.Price,
 
+                ImageUrl = createProductDto.ImageUrl,
+
                 CreatedTime = DateTime.UtcNow
             };
 
-            using(var context = new DrugstoreContext())
+            using(var context = new DrugStoreContext())
             {
                 if(product == null)
                 {
@@ -118,7 +120,7 @@ namespace DrugStoreBackEnd.Controllers
 
         public ActionResult<Product> put(Guid id, UpdateProductDto updateProductDto)
         {
-            using(var context = new DrugstoreContext())
+            using(var context = new DrugStoreContext())
             {
                 var existingProduct = context.Products.FirstOrDefault(x => x.Id == id);
 
@@ -139,6 +141,8 @@ namespace DrugStoreBackEnd.Controllers
 
                     existingProduct.Price = updateProductDto.Price;
 
+                    existingProduct.ImageUrl = updateProductDto.ImageUrl;
+
                     context.Products.Update(existingProduct);
 
                     context.SaveChanges();
@@ -158,7 +162,7 @@ namespace DrugStoreBackEnd.Controllers
 
         public ActionResult<Product> Delete (Guid id)
         {
-            using(var context = new DrugstoreContext())
+            using(var context = new DrugStoreContext())
             {
                 var result = context.Products.FirstOrDefault(x => x.Id == id);
 

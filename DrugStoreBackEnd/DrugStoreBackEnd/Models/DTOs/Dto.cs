@@ -1,10 +1,10 @@
 ﻿namespace DrugStoreBackEnd.Models.DTOs
 {
-    public record ProductDto(Guid Id, string ProductName, string ProductBrand, string Instructions, int AccessId, decimal Price,DateTime CreatedTime);
+    public record ProductDto(Guid Id, string ProductName, string ProductBrand, string Instructions, int AccessId, decimal Price,DateTime CreatedTime, string ImageUrl);
 
-    public record CreatedProductDto(string ProductName, string ProductBrand, string Instructions, int AccessId, decimal Price);
+    public record CreatedProductDto(string ProductName, string ProductBrand, string Instructions, int AccessId, decimal Price, string ImageUrl);
 
-    public record UpdateProductDto(string ProductName, string ProductBrand, string Instructions, int AccessId, decimal Price);
+    public record UpdateProductDto(string ProductName, string ProductBrand, string Instructions, int AccessId, decimal Price, string ImageUrl);
 
     public record AccessDto(int Id, string Name, string Description);
 

@@ -20,7 +20,7 @@ namespace DrugStoreBackEnd.Controllers
 
         public ActionResult<IEnumerable<Accesess>> Get()
         {
-            using (var context = new DrugstoreContext())
+            using (var context = new DrugStoreContext())
             {
                 var result = context.Products.ToList();
 
@@ -46,7 +46,7 @@ namespace DrugStoreBackEnd.Controllers
 
         public ActionResult<Accesess> GetById(int id)
         {
-            using(var context = new DrugstoreContext())
+            using(var context = new DrugStoreContext())
             {
                 var result = context.Accesesses.FirstOrDefault(x => x.Id == id);
 
@@ -84,7 +84,7 @@ namespace DrugStoreBackEnd.Controllers
                 
             };
 
-            using (var context = new DrugstoreContext())
+            using (var context = new DrugStoreContext())
             {
                 if (access == null)
                 {
@@ -112,7 +112,7 @@ namespace DrugStoreBackEnd.Controllers
 
         public ActionResult<Accesess> put(int id, UpdateAccessDto updateAccessDto)
         {
-            using (var context = new DrugstoreContext())
+            using (var context = new DrugStoreContext())
             {
                 var existingAccessLevel = context.Accesesses.FirstOrDefault(x => x.Id == id);
 
@@ -148,7 +148,7 @@ namespace DrugStoreBackEnd.Controllers
         [HttpDelete("{id}")]
         public ActionResult<Accesess> Delete(int id)
         {
-            using (var context = new DrugstoreContext())
+            using (var context = new DrugStoreContext())
             {
                 var result = context.Accesesses.FirstOrDefault(x => x.Id == id);
 
