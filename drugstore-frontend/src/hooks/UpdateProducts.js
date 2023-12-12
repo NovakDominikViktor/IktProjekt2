@@ -2,13 +2,14 @@
 import React, { useState } from 'react';
 import UpdateConfirmation from '../components/UpdateConfirmation';
 
-const UpdateProduct = ({ id, productName, productBrand, instructions, price, updateProductState, loggedInUser }) => {
+const UpdateProduct = ({ id, productName, productBrand, instructions, price, ImageUrl ,updateProductState, loggedInUser }) => {
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [fields, setFields] = useState({
     productName,
     productBrand,
     instructions,
     price,
+    ImageUrl,
   });
 
   const handleUpdate = async () => {

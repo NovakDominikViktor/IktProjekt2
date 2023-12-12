@@ -37,6 +37,14 @@ const UpdateConfirmation = ({ fields, onFieldChange, onConfirm, onCancel, userAc
           onChange={(e) => onFieldChange('price', e.target.value)}
         />
       </label>
+      <label>
+        URL:
+        <input
+          type="text"
+          value={fields.ImageUrl}
+          onChange={(e) => onFieldChange('ImageUrl', e.target.value)}
+        />
+      </label>
       <br/>
       <br/>
       <button

@@ -22,9 +22,12 @@ export default function GetProducts(props) {
         {...productobj}
         updateCardState={props.stateChange}
         loggedInUser={props.loggedInUser}
+        
       />
     );
+   
   });
 
   return <>{productsElements}</>;
+
 }

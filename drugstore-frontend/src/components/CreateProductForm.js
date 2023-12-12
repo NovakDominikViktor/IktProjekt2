@@ -64,6 +64,18 @@ export default function CreateProductForm(props) {
                         placeholder="Access Level ID"
                     />
                 </div>
+                <div className="mb-3">
+                    <label htmlFor="ImageUrl" className="form-label">URL:</label>
+                    <input
+                        type="text"
+                        id="ImageUrl"
+                        name="ImageUrl"
+                        value={props.ImageUrl}
+                        onChange={props.handleChange}
+                        className="form-control"
+                        placeholder="Image URL"
+                    />
+                </div>
                 <button type="submit" className="btn btn-primary">Submit</button>
             </form>
         </div>
