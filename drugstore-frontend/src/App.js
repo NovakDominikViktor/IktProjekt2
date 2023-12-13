@@ -1,19 +1,27 @@
 import './App.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './page/Header';
 import Home from './page/Home';
 import Browse from './page/Browse';
 import Login from './page/Login';
 import Register from './page/Register';
-import Profile from './page/Profile'; // Importáljuk a Profile komponenst
+import Profile from './page/Profile';
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState(null);
 
+  useEffect(() => {
+    const storedUser = localStorage.getItem('loggedInUser');
+    if (storedUser) {
+      setLoggedInUser(JSON.parse(storedUser));
+    }
+  }, []);
+
   const handleLoginSuccess = (username, userId, accessId, email, password) => {
-    // You can update state or perform actions after successful login
-    setLoggedInUser({ username, userId, accessId,email, password});
+    const user = { username, userId, accessId, email, password };
+    localStorage.setItem('loggedInUser', JSON.stringify(user));
+    setLoggedInUser(user);
   };
 
   const handleRegisterSuccess = () => {
@@ -21,13 +29,16 @@ function App() {
     console.log('Registration successful');
   };
 
-  const handleLogout = () => {
-    setLoggedInUser(null);
-  };
+ const handleLogout = () => {
+  localStorage.removeItem('loggedInUser');
+  setLoggedInUser(null);
+
+};
 
   
 
   return (
+    
     <Router>
       <div>
         <Header loggedInUser={loggedInUser} onLogout={handleLogout} />

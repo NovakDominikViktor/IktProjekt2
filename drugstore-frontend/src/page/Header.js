@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 
 function Header({ loggedInUser, onLogout }) {
   const handleLogout = () => {
+
+
     
     onLogout();
     window.location.reload();
@@ -21,7 +23,7 @@ function Header({ loggedInUser, onLogout }) {
             {loggedInUser.accessId >= 1 && (
               <Link to="/profile" className="navbar-brand">Profile</Link>
             )}
-            <Link to="#" className="navbar-brand" onClick={handleLogout}>Logout</Link>
+            <Link to="/login" className="navbar-brand" onClick={handleLogout}>Logout</Link>
           </>
         ) : (
           <>

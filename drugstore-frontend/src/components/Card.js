@@ -4,12 +4,15 @@ import DeleteProduct from '../hooks/DeleteProducts';
 import UpdateProduct from '../hooks/UpdateProducts';
 import './card.css';
 
-function Card({ id, productName, productBrand, instructions, price, updateCardState, imageUrl, loggedInUser }) {
+function Card({ id, productName, productBrand, instructions, price, updateCardState, imageUrl, loggedInUser, accessId }) {
   const isUserLoggedIn = loggedInUser && loggedInUser.accessId !== undefined;
+  const isPremium = accessId === 2;
 
   return (
-    <div className="card mb-3" key={id}>
-      <img src={imageUrl} alt='...' />
+    <div className={`card mb-3 ${isPremium ? 'premium' : ''}`} key={id}>
+      <div className="text-center"> {/* Középre igazítás */}
+        <img src={imageUrl} alt='...' />
+      </div>
       <div className="card-body">
         <h5 className="card-title">{productName}</h5>
         <p className="card-text"><strong>Brand:</strong> {productBrand}</p>
