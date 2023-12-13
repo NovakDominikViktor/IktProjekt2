@@ -54,8 +54,10 @@ const Profile = ({ user, onTogglePremium }) => {
 
   return (
     <div className="container mt-5">
-      <h2>Profile</h2>
       <div className="card">
+        <div className="card-header">
+          <h2>Profile</h2>
+        </div>
         <div className="card-body">
           <p className="card-text">
             <strong>Username:</strong> {user.username}
@@ -68,22 +70,22 @@ const Profile = ({ user, onTogglePremium }) => {
           </p>
 
           {(user.accessId === 1 || user.accessId === 2 || user.accessId === 3) && (
-            <>
+            <div className="btn-group" role="group">
               <button
-                className="btn btn-primary me-2"
                 onClick={handleBecomePremium}
                 disabled={user.accessId === 3 || isPremium}
+                className="btn btn-primary"
               >
                 Become Premium
               </button>
               <button
-                className="btn btn-secondary"
                 onClick={handleCancelPremium}
                 disabled={user.accessId === 3 || !isPremium}
+                className="btn btn-secondary"
               >
                 Cancel Premium
               </button>
-            </>
+            </div>
           )}
         </div>
       </div>
