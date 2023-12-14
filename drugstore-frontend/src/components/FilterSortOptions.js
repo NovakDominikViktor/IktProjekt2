@@ -1,13 +1,7 @@
-// FilterSortOptions.js
 import React, { useState } from 'react';
 
-function FilterSortOptions({ onFilterChange, onSortChange, onSearchChange }) {
+function FilterSortOptions({ onSortChange, onSearchChange }) {
   const [searchTerm, setSearchTerm] = useState('');
-
-  const handleFilterChange = (e) => {
-    const filterValue = e.target.value;
-    onFilterChange(filterValue);
-  };
 
   const handleSortChange = (e) => {
     const sortValue = e.target.value;
@@ -21,29 +15,27 @@ function FilterSortOptions({ onFilterChange, onSortChange, onSearchChange }) {
   };
 
   return (
-    <div>
-      <label>
-        Filter by Brand:
-        <select onChange={handleFilterChange}>
-          <option value="">All Brands</option>
-          <option value="Brand1">Brand1</option>
-          <option value="Brand2">Brand2</option>
-          {/* Add more brand options as needed */}
-        </select>
-      </label>
-      <label>
-        Sort by:
-        <select onChange={handleSortChange}>
-          <option value="name-asc">Name (A-Z)</option>
-          <option value="name-desc">Name (Z-A)</option>
-          <option value="price-asc">Price (Low to High)</option>
-          <option value="price-desc">Price (High to Low)</option>
-        </select>
-      </label>
-      <label>
-        Search by Name:
-        <input type="text" value={searchTerm} onChange={handleSearchChange} />
-      </label>
+    <div className="my-3">
+      <div className="row">
+        <div className="col-md-6">
+          <label className="form-label">Sort by:</label>
+          <select className="form-select" onChange={handleSortChange}>
+            <option value="name-asc">Name (A-Z)</option>
+            <option value="name-desc">Name (Z-A)</option>
+            <option value="price-asc">Price (Low to High)</option>
+            <option value="price-desc">Price (High to Low)</option>
+          </select>
+        </div>
+        <div className="col-md-6">
+          <label className="form-label">Search by Name:</label>
+          <input
+            type="text"
+            className="form-control"
+            value={searchTerm}
+            onChange={handleSearchChange}
+          />
+        </div>
+      </div>
     </div>
   );
 }
