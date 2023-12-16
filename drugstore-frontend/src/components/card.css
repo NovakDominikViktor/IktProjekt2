@@ -5,7 +5,7 @@
   margin: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
-  display:inline-block;
+  display: inline-block;
 }
 
 .card:hover {
@@ -14,7 +14,7 @@
 
 .card img {
   max-width: 100%;
-  max-height: 150px; 
+  max-height: 150px;
   object-fit: contain;
 }
 
@@ -47,14 +47,76 @@
   transform: scale(1.1);
 }
 
-.card.premium {
-  background-color: #ffeeba;
-  border: 2px solid #ffc107; 
-  color: #495057; 
+.profile-card {
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  transition: transform 0.3s ease-in-out;
 }
 
-.card.premium:hover {
-  transform: scale(1.1);
-
+.profile-card:hover {
+  transform: scale(1.05);
 }
 
+.standard-card {
+  background-color: #f0f0f0;
+}
+
+.premium-card {
+  background-color: #e6f7ff;
+}
+
+.admin-card {
+  background-color: #ffe6e6;
+}
+
+/* Specific styles for different card types */
+.standard-card .card-title {
+  color: #333;
+}
+
+.premium-card .card-title {
+  color: #0056b3;
+}
+
+.admin-card .card-title {
+  color: #b30000;
+}
+
+.standard-card .btn-primary {
+  background-color: #fe1a1a;
+}
+
+.premium-card .btn-primary {
+  background-color: #7e9fae;
+}
+
+.admin-card .btn-primary {
+  background-color: #923535;
+}
+
+/* Gombok stílusa */
+.btn-group {
+  margin-top: 10px;
+}
+
+.btn {
+  padding: 10px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: #fff;
+  border: none;
+}

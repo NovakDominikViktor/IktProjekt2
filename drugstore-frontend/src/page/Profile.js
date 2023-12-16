@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import ProfileCard from '../components/ProfileCard'; // Importáld be a ProfileCard komponenst
 
 const Profile = ({ user, onTogglePremium }) => {
   const [isPremium, setIsPremium] = useState(user.accessId === 2);
@@ -54,41 +55,9 @@ const Profile = ({ user, onTogglePremium }) => {
 
   return (
     <div className="container mt-5">
-      <div className="card">
-        <div className="card-header">
-          <h2>Profile</h2>
-        </div>
-        <div className="card-body">
-          <p className="card-text">
-            <strong>Username:</strong> {user.username}
-          </p>
-          <p className="card-text">
-            <strong>Email:</strong> {user.email}
-          </p>
-          <p className="card-text">
-            <strong>Access Level:</strong> {user.accessId === 3 ? 'Admin' : (isPremium ? 'Premium' : 'Standard')}
-          </p>
+      
+      <ProfileCard user={user} onTogglePremium={onTogglePremium} isPremium={isPremium} handleCancelPremium={handleCancelPremium} handleBecomePremium={handleBecomePremium} />
 
-          {(user.accessId === 1 || user.accessId === 2 || user.accessId === 3) && (
-            <div className="btn-group" role="group">
-              <button
-                onClick={handleBecomePremium}
-                disabled={user.accessId === 3 || isPremium}
-                className="btn btn-primary"
-              >
-                Become Premium
-              </button>
-              <button
-                onClick={handleCancelPremium}
-                disabled={user.accessId === 3 || !isPremium}
-                className="btn btn-secondary"
-              >
-                Cancel Premium
-              </button>
-            </div>
-          )}
-        </div>
-      </div>
     </div>
   );
 };
