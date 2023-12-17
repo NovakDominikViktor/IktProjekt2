@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 
 function FilterSortOptions({ onSortChange, onSearchChange }) {
   const [searchTerm, setSearchTerm] = useState('');
-
   const handleSortChange = (e) => {
     const sortValue = e.target.value;
     onSortChange(sortValue);
@@ -26,8 +25,10 @@ function FilterSortOptions({ onSortChange, onSearchChange }) {
             <option value="price-desc">Price (High to Low)</option>
           </select>
         </div>
+
         <div className="col-md-6">
           <label className="form-label">Search by Name:</label>
+          
           <input
             type="text"
             className="form-control"

@@ -13,7 +13,6 @@ const UpdateProduct = ({ id, productName, productBrand, instructions, price, Ima
   });
 
   const handleUpdate = async () => {
-    // Call the API to update the product with the given id and fields
     try {
       await fetch(`https://localhost:7227/Product/${id}`, {
         method: 'PUT',
@@ -22,13 +21,10 @@ const UpdateProduct = ({ id, productName, productBrand, instructions, price, Ima
           'Content-Type': 'application/json',
         },
       });
-
-      // If the update is successful, update the product state in the parent component
       updateProductState();
     } catch (error) {
       console.error('Error updating product:', error);
     } finally {
-      // Close the confirmation dialog
       setShowConfirmation(false);
     }
   };

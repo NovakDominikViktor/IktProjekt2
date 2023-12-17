@@ -1,4 +1,3 @@
-// GetProducts.js
 import React, { useState, useEffect } from 'react';
 import Card from '../components/Card';
 import FilterSortOptions from '../components/FilterSortOptions';
@@ -11,7 +10,6 @@ export default function GetProducts({ stateChange, count, loggedInUser }) {
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
-    // Fetch products from the API
     const url = 'https://localhost:7227/Product';
     fetch(url)
       .then((res) => res.json())
@@ -23,24 +21,21 @@ export default function GetProducts({ stateChange, count, loggedInUser }) {
   }, [count]);
 
   useEffect(() => {
-    // Filter products based on brand
     const brandFilteredProducts = filterValue
       ? products.filter((product) => product.productBrand === filterValue)
       : products;
 
-    // Filter products based on search term
     const searchFilteredProducts = searchTerm
       ? brandFilteredProducts.filter((product) =>
           product.productName.toLowerCase().includes(searchTerm.toLowerCase())
         )
+
       : brandFilteredProducts;
 
-    // Filter products visible to the logged-in user
     const userFilteredProducts = searchFilteredProducts.filter(
       (product) => product.accessId === 1 || (loggedInUser && loggedInUser.accessId >= 2)
     );
 
-    // Sort products based on selected option
     const sortedProducts = userFilteredProducts.sort((a, b) => {
       const [prop, order] = sortValue.split('-');
       const aValue = prop === 'price' ? parseFloat(a[prop]) : a[prop];

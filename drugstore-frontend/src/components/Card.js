@@ -1,4 +1,3 @@
-// Card.js
 import React from 'react';
 import DeleteProduct from '../hooks/DeleteProducts';
 import UpdateProduct from '../hooks/UpdateProducts';
@@ -13,13 +12,13 @@ function Card({ id, productName, productBrand, instructions, price, updateCardSt
       <div className="text-center"> {/* Középre igazítás */}
         <img src={imageUrl} alt='...' />
       </div>
+
       <div className="card-body">
         <h5 className="card-title">{productName}</h5>
         <p className="card-text"><strong>Brand:</strong> {productBrand}</p>
         <p className="card-text"><strong>Instructions:</strong> {instructions}</p>
         <p className="card-text"><strong>Price:</strong> ${price}</p>
 
-        {/* Include the UpdateProduct component with the necessary props */}
         {isUserLoggedIn && (
           <UpdateProduct
             id={id}

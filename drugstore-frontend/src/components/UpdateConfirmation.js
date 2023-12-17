@@ -1,10 +1,10 @@
-// UpdateConfirmation.js
 import React from 'react';
 
 const UpdateConfirmation = ({ fields, onFieldChange, onConfirm, onCancel, userAccessId }) => {
   return (
     <div className="update-confirmation">
       <p>Update the following fields:</p>
+
       <label>
         Product Name:
         <input
@@ -13,6 +13,7 @@ const UpdateConfirmation = ({ fields, onFieldChange, onConfirm, onCancel, userAc
           onChange={(e) => onFieldChange('productName', e.target.value)}
         />
       </label>
+
       <label>
         Product Brand:
         <input
@@ -21,6 +22,7 @@ const UpdateConfirmation = ({ fields, onFieldChange, onConfirm, onCancel, userAc
           onChange={(e) => onFieldChange('productBrand', e.target.value)}
         />
       </label>
+
       <label>
         Instructions:
         <input
@@ -29,6 +31,7 @@ const UpdateConfirmation = ({ fields, onFieldChange, onConfirm, onCancel, userAc
           onChange={(e) => onFieldChange('instructions', e.target.value)}
         />
       </label>
+
       <label>
         Price:
         <input
@@ -37,6 +40,7 @@ const UpdateConfirmation = ({ fields, onFieldChange, onConfirm, onCancel, userAc
           onChange={(e) => onFieldChange('price', e.target.value)}
         />
       </label>
+
       <label>
         URL:
         <input
@@ -45,8 +49,11 @@ const UpdateConfirmation = ({ fields, onFieldChange, onConfirm, onCancel, userAc
           onChange={(e) => onFieldChange('ImageUrl', e.target.value)}
         />
       </label>
+
       <br/>
+
       <br/>
+
       <button
         onClick={onConfirm}
         className="btn btn-primary"
@@ -54,6 +61,7 @@ const UpdateConfirmation = ({ fields, onFieldChange, onConfirm, onCancel, userAc
       >
         Yes, Update
       </button>
+
       <button onClick={onCancel} className="btn btn-secondary">
         Cancel
       </button>

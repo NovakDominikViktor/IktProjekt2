@@ -8,6 +8,7 @@ import Login from './page/Login';
 import Register from './page/Register';
 import Profile from './page/Profile';
 
+
 function App() {
   const [loggedInUser, setLoggedInUser] = useState(null);
 
@@ -25,7 +26,6 @@ function App() {
   };
 
   const handleRegisterSuccess = () => {
-    // Handle successful registration if needed
     console.log('Registration successful');
   };
 
@@ -35,7 +35,6 @@ function App() {
   };
 
   const handleTogglePremium = () => {
-    // Frissítsd a felhasználói adatokat a localStorage-ban
     const updatedUser = { ...loggedInUser, accessId: loggedInUser.accessId === 1 ? 2 : 1 };
     localStorage.setItem('loggedInUser', JSON.stringify(updatedUser));
     setLoggedInUser(updatedUser);
@@ -67,6 +66,7 @@ function App() {
         </Routes>
       </div>
     </Router>
+  
   );
 }
 

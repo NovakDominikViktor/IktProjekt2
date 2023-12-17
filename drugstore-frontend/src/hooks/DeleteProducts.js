@@ -5,18 +5,14 @@ const DeleteProduct = ({ id, updateProductState, loggedInUser }) => {
   const [showConfirmation, setShowConfirmation] = useState(false);
 
   const handleDelete = async () => {
-    // Call the API to delete the product with the given id
     try {
       await fetch(`https://localhost:7227/Product/${id}`, {
         method: 'DELETE',
       });
-
-      // If the deletion is successful, update the product state in the parent component
       updateProductState();
     } catch (error) {
       console.error('Error deleting product:', error);
     } finally {
-      // Close the confirmation dialog
       setShowConfirmation(false);
     }
   };

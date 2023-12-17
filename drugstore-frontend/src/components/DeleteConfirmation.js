@@ -11,6 +11,7 @@ const DeleteConfirmation = ({ onConfirm, onCancel, userAccessId }) => {
       >
         Yes, Delete
       </button>
+
       <button onClick={onCancel} className="btn btn-secondary">
         Cancel
       </button>

@@ -16,6 +16,7 @@ export default function CreateProductForm(props) {
                         placeholder="Product Name"
                     />
                 </div>
+
                 <div className="mb-3">
                     <label htmlFor="productBrand" className="form-label">Product Brand:</label>
                     <input
@@ -28,6 +29,7 @@ export default function CreateProductForm(props) {
                         placeholder="Product Brand"
                     />
                 </div>
+
                 <div className="mb-3">
                     <label htmlFor="instructions" className="form-label">Instructions:</label>
                     <input
@@ -40,6 +42,7 @@ export default function CreateProductForm(props) {
                         placeholder="Instructions"
                     />
                 </div>
+                
                 <div className="mb-3">
                     <label htmlFor="price" className="form-label">Price:</label>
                     <input
@@ -52,6 +55,7 @@ export default function CreateProductForm(props) {
                         placeholder="Price"
                     />
                 </div>
+                
                 <div className="mb-3">
                     <label htmlFor="accessId" className="form-label">Access Level ID:</label>
                     <input
@@ -64,6 +68,7 @@ export default function CreateProductForm(props) {
                         placeholder="Access Level ID"
                     />
                 </div>
+                
                 <div className="mb-3">
                     <label htmlFor="ImageUrl" className="form-label">URL:</label>
                     <input
@@ -76,6 +81,7 @@ export default function CreateProductForm(props) {
                         placeholder="Image URL"
                     />
                 </div>
+
                 <button type="submit" className="btn btn-primary">Submit</button>
             </form>
         </div>

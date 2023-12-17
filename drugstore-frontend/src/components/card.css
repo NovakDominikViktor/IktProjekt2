@@ -1,5 +1,3 @@
-/* card.css */
-
 .card {
   width: 18rem;
   margin: 10px;
@@ -73,7 +71,6 @@
   background-color: #ffe6e6;
 }
 
-/* Specific styles for different card types */
 .standard-card .card-title {
   color: #333;
 }
@@ -98,7 +95,6 @@
   background-color: #923535;
 }
 
-/* Gombok stílusa */
 .btn-group {
   margin-top: 10px;
 }

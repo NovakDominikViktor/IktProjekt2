@@ -19,7 +19,6 @@ function CreateProducts({ loggedInUser }) {
     const handleSubmit = async (e) => {
       const url = 'https://localhost:7227/Product';
       e.preventDefault();
-  
       await fetch(url, {
         method: 'POST',
         body: JSON.stringify(formData),
@@ -30,10 +29,9 @@ function CreateProducts({ loggedInUser }) {
         .then((response) => response.json())
         .then((data) => {
           console.log(data);
-          // Check if the product was added successfully
           if (data.isSuccess) {
             console.log('Product added successfully');
-            // Trigger a page refresh
+          
             window.location.reload();
           } else {
             console.error('Failed to add product:', data.message);
@@ -42,7 +40,6 @@ function CreateProducts({ loggedInUser }) {
         .catch((error) => console.error('Error adding product:', error));
     };
   
-    // Conditionally render the form based on the accessId
     const isAccessId3 = loggedInUser && loggedInUser.accessId === 3;
   
     return (
