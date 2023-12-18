@@ -1,6 +1,9 @@
+// UpdateConfirmation.js
 import React from 'react';
 
 const UpdateConfirmation = ({ fields, onFieldChange, onConfirm, onCancel, userAccessId }) => {
+  console.log('Fields:', fields); // Új sor hozzáadva
+
   return (
     <div className="update-confirmation">
       <p>Update the following fields:</p>
@@ -44,9 +47,9 @@ const UpdateConfirmation = ({ fields, onFieldChange, onConfirm, onCancel, userAc
       <label>
         URL:
         <input
-          type="text"
-          value={fields.ImageUrl}
-          onChange={(e) => onFieldChange('ImageUrl', e.target.value)}
+          type="url"
+          value={fields.imageUrl}  
+          onChange={(e) => onFieldChange('imageUrl', e.target.value)}
         />
       </label>
 

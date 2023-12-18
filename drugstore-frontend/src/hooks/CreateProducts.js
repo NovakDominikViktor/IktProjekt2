@@ -8,7 +8,7 @@ function CreateProducts({ loggedInUser }) {
       instructions: '',
       price: '',
       accessId: '',
-      ImageUrl: '',
+      imageUrl: '',
     });
   
     const handleChange = (e) => {

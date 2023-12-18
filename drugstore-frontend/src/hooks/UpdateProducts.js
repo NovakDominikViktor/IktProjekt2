@@ -2,25 +2,33 @@
 import React, { useState } from 'react';
 import UpdateConfirmation from '../components/UpdateConfirmation';
 
-const UpdateProduct = ({ id, productName, productBrand, instructions, price, ImageUrl ,updateProductState, loggedInUser }) => {
+const UpdateProduct = ({ id, productName, productBrand, instructions, price, imageUrl,accessId ,updateProductState, loggedInUser }) => {
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [fields, setFields] = useState({
     productName,
     productBrand,
     instructions,
     price,
-    ImageUrl,
+    imageUrl,
+    accessId,
+    
   });
 
   const handleUpdate = async () => {
     try {
-      await fetch(`https://localhost:7227/Product/${id}`, {
+      const response = await fetch(`https://localhost:7227/Product/${id}`, {
         method: 'PUT',
         body: JSON.stringify(fields),
         headers: {
           'Content-Type': 'application/json',
         },
       });
+  
+      if (!response.ok) {
+        console.error('Server responded with an error:', response.status, response.statusText);
+        return;
+      }
+  
       updateProductState();
     } catch (error) {
       console.error('Error updating product:', error);

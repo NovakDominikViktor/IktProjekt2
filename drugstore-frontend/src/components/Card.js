@@ -27,6 +27,8 @@ function Card({ id, productName, productBrand, instructions, price, updateCardSt
             instructions={instructions}
             price={price}
             updateProductState={updateCardState}
+            imageUrl={imageUrl}
+            accessId = {accessId}
             loggedInUser={loggedInUser}
           />
         )}

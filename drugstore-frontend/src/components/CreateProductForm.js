@@ -70,12 +70,12 @@ export default function CreateProductForm(props) {
                 </div>
                 
                 <div className="mb-3">
-                    <label htmlFor="ImageUrl" className="form-label">URL:</label>
+                    <label htmlFor="imageUrl" className="form-label">URL:</label>
                     <input
                         type="text"
-                        id="ImageUrl"
-                        name="ImageUrl"
-                        value={props.ImageUrl}
+                        id="imageUrl"
+                        name="imageUrl"
+                        value={props.imageUrl}
                         onChange={props.handleChange}
                         className="form-control"
                         placeholder="Image URL"
