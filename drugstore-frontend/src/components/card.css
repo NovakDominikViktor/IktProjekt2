@@ -25,6 +25,10 @@
   font-weight: bold;
 }
 
+.premium{
+  background-color: #2a6f90;
+}
+
 .card-text {
   margin-bottom: 0.5rem;
 }
@@ -43,6 +47,12 @@
 
 .grow:hover {
   transform: scale(1.1);
+}
+
+.card.premium {
+  background-color: #ffeeba;
+  border: 2px solid #ffc107; 
+  color: #495057; 
 }
 
 .profile-card {

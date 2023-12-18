@@ -9,7 +9,7 @@ function Card({ id, productName, productBrand, instructions, price, updateCardSt
 
   return (
     <div className={`card mb-3 ${isPremium ? 'premium' : ''}`} key={id}>
-      <div className="text-center"> {/* Középre igazítás */}
+      <div className="text-center"> 
         <img src={imageUrl} alt='...' />
       </div>
 
