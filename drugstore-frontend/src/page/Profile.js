@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import ProfileCard from '../components/ProfileCard'; // Importáld be a ProfileCard komponenst
+import ProfileCard from '../components/ProfileCard'; 
 
-const Profile = ({ user, onTogglePremium }) => {
+const Profile = ({user, onTogglePremium, onToggleAdmin}) => {
   const [isPremium, setIsPremium] = useState(user.accessId === 2);
+  const [isAdmin, setIsAdmin] = useState(user.accessId === 3);
 
   useEffect(() => {
     setIsPremium(user.accessId === 2);
+    setIsAdmin(user.accessId === 3);
   }, [user.accessId]);
 
   const handleBecomePremium = async () => {
@@ -23,6 +25,25 @@ const Profile = ({ user, onTogglePremium }) => {
     }
   };
 
+  const handleBecomeAdmin = async () => {
+    try {
+      const response = await updateUserAccessId(3);
+
+      if (response.ok) {
+        setIsAdmin(true);
+        onToggleAdmin();
+      } else {
+        console.error('Error updating access level:', await response.text());
+      }
+    } catch (error) {
+      console.error('An unexpected error occurred:', error);
+    }
+  };
+
+ 
+    
+  
+
   const handleCancelPremium = async () => {
     try {
       const response = await updateUserAccessId(1);
@@ -30,6 +51,21 @@ const Profile = ({ user, onTogglePremium }) => {
       if (response.ok) {
         setIsPremium(false);
         onTogglePremium();
+      } else {
+        console.error('Error updating access level:', await response.text());
+      }
+    } catch (error) {
+      console.error('An unexpected error occurred:', error);
+    }
+  };
+
+  const handleCancelAdmin = async () => {
+    try {
+      const response = await updateUserAccessId(2);
+
+      if (response.ok) {
+        setIsAdmin(false);
+        onToggleAdmin();
       } else {
         console.error('Error updating access level:', await response.text());
       }
@@ -56,7 +92,7 @@ const Profile = ({ user, onTogglePremium }) => {
   return (
     <div className="container mt-5">
       
-      <ProfileCard user={user} onTogglePremium={onTogglePremium} isPremium={isPremium} handleCancelPremium={handleCancelPremium} handleBecomePremium={handleBecomePremium} />
+      <ProfileCard user={user} onTogglePremium={onTogglePremium} isPremium={isPremium} handleCancelPremium={handleCancelPremium} handleBecomePremium={handleBecomePremium} onToggleAdmin={onToggleAdmin} isAdmin={isAdmin} handleCancelAdmin={handleCancelAdmin} handleBecomeAdmin={handleBecomeAdmin} />
 
     </div>
   );

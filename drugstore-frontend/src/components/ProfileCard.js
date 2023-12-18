@@ -1,7 +1,7 @@
 import React from 'react';
 import './card.css';
 
-const ProfileCard = ({ user, handleCancelPremium, isPremium,handleBecomePremium }) => {
+const ProfileCard = ({ user, handleCancelPremium, isPremium, handleBecomePremium, handleBecomeAdmin, isAdmin, handleCancelAdmin }) => {
   const cardStyle = user.accessId === 2 ? 'premium-card' : user.accessId === 3 ? 'admin-card' : 'standard-card';
 
   return (
@@ -25,26 +25,46 @@ const ProfileCard = ({ user, handleCancelPremium, isPremium,handleBecomePremium 
 
         {(user.accessId === 1 || user.accessId === 2 || user.accessId === 3) && (
           <div className="btn-group" role="group">
-            <button
-              onClick={handleBecomePremium}
-              disabled={user.accessId === 3 || isPremium}
-              className="btn btn-primary"
-            >
-              Become Premium
-            </button>
+            {isPremium ? (
+              <button
+                onClick={handleBecomeAdmin}
+                disabled={user.accessId === 3 || isAdmin}
+                className="btn btn-primary"
+              >
+                Become Admin
+              </button>
+            ) : (
+              <button
+                onClick={handleBecomePremium}
+                disabled={user.accessId === 3 || isPremium}
+                className="btn btn-primary"
+              >
+                Become Premium
+              </button>
+            )}
 
-            <button
-              onClick={handleCancelPremium}
-              disabled={user.accessId === 3 || !isPremium}
-              className="btn btn-secondary"
-            >
-              Cancel Premium
-            </button>
+            {isAdmin ? (
+              <button
+                onClick={handleCancelAdmin}
+                disabled={ !isAdmin}
+                className="btn btn-secondary"
+              >
+                Cancel Admin
+              </button>
+            ) : (
+              <button
+                onClick={handleCancelPremium}
+                disabled={user.accessId === 3 || !isPremium}
+                className="btn btn-secondary"
+              >
+                Cancel Premium
+              </button>
+            )}
           </div>
         )}
       </div>
-  </div>
+    </div>
   );
-}
+};
 
 export default ProfileCard;

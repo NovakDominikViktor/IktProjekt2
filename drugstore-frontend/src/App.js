@@ -40,6 +40,12 @@ function App() {
     setLoggedInUser(updatedUser);
   };
 
+  const handleToggleAdmin = () => {
+    const updatedUser = { ...loggedInUser, accessId: loggedInUser.accessId === 2 ? 3 : 2 };
+    localStorage.setItem('loggedInUser', JSON.stringify(updatedUser));
+    setLoggedInUser(updatedUser);
+  }
+
   
 
   return (
@@ -61,7 +67,7 @@ function App() {
           {/* Új útvonal hozzáadása a Profile komponenshez */}
           <Route
       path="/profile"
-      element={<Profile user={loggedInUser} onTogglePremium={handleTogglePremium} />}
+      element={<Profile user={loggedInUser} onTogglePremium={handleTogglePremium} onToggleAdmin={handleToggleAdmin} />}
     />
         </Routes>
       </div>
