@@ -94,7 +94,7 @@ const Login = ({ handleLoginSuccess }) => {
     
           {/* Add the text and link to register */}
           <p className="mt-3">
-          <img alt='kep' src='https://www.pinatafarm.com/p/f32f8e14-4cbf-416a-ab9b-155f6a936714'/> <span onClick={() => navigate('/register')} style={{ cursor: 'pointer', color: 'blue' }}>Register here</span>.
+          <img alt='kep' src='https://github.com/NovakDominikViktor/IktProjekt2/blob/main/megamind.png?raw=true' style={{ width: "60px", height: "60px" }}/> <span onClick={() => navigate('/register')} style={{ cursor: 'pointer', color: 'blue' }}>Register here</span>.
           </p>
         </div>
       </div>

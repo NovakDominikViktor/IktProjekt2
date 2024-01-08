@@ -18,11 +18,7 @@ function Header({ loggedInUser, onLogout }) {
       <Link to="/" className="navbar-brand">Home</Link>
       {loggedInUser ? (
         <>
-          <span className="navbar-text mx-3">Welcome, {loggedInUser.username}! <img
-          src="https://cdn.ebaumsworld.com/mediaFiles/picture/1035099/85785795.jpg"
-          alt="YourDrugstore"
-          style={{ width: "50px", height: "50px" }}
-        /></span>
+          <span className="navbar-text mx-3">Welcome, {loggedInUser.username}! </span>
           
           <Link to="/browse" className="navbar-brand">Browse</Link>
           {console.log(loggedInUser)}
