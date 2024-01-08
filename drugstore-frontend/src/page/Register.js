@@ -54,10 +54,11 @@ const Register = ({ handleRegisterSuccess }) => {
             Email:
           </label>
           <input
-            type="text"
+            type="email"
             className="form-control"
             id="email"
             value={email}
+            required
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>

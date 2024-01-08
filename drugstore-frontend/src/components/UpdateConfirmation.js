@@ -1,8 +1,7 @@
-// UpdateConfirmation.js
 import React from 'react';
 
 const UpdateConfirmation = ({ fields, onFieldChange, onConfirm, onCancel, userAccessId }) => {
-  console.log('Fields:', fields); // Új sor hozzáadva
+  console.log('Fields:', fields); 
 
   return (
     <div className="update-confirmation">

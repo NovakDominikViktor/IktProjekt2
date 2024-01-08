@@ -44,7 +44,7 @@ export default function GetProducts({ stateChange, count, loggedInUser }) {
       if (order === 'asc') {
         return aValue > bValue ? 1 : -1;
       } else {
-        return aValue < bValue ? 1 : -1;
+        return aValue < bValue ? -1 : 1;
       }
     });
 

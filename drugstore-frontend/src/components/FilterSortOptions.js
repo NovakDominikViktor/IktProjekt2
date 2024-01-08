@@ -8,11 +8,10 @@ function FilterSortOptions({ onSortChange, onSearchChange }) {
   };
 
   const handleSearchChange = (e) => {
-    const term = e.target.value;
+    const term = e.target.value.toLowerCase(); 
     setSearchTerm(term);
     onSearchChange(term);
   };
-
   return (
     <div className="my-3">
       <div className="row">
@@ -28,7 +27,6 @@ function FilterSortOptions({ onSortChange, onSearchChange }) {
 
         <div className="col-md-6">
           <label className="form-label">Search by Name:</label>
-          
           <input
             type="text"
             className="form-control"
