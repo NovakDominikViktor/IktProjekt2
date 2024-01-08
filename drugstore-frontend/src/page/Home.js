@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom"; // Import Link from react-router-dom
+import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 
 function Home() {
@@ -7,16 +7,18 @@ function Home() {
     <div>
       <section className="jumbotron text-center">
         <div className="container">
+        
           <h1 className="display-4">Welcome to YourDrugstore</h1>
           <p className="lead">
             Your trusted source for high-quality medications and healthcare
             products.
           </p>
-          {/* Use Link for navigation */}
           <Link to="/browse" className="btn btn-primary">
             Browse Products
           </Link>
         </div>
+        {/* Really small image with specific width and height */}
+       
       </section>
 
       <div className="container">

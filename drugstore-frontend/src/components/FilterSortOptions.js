@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
 
-function FilterSortOptions({ onSortChange, onSearchChange }) {
+const FilterSortOptions = ({ onSortChange, onSearchChange }) => {
   const [searchTerm, setSearchTerm] = useState('');
+
   const handleSortChange = (e) => {
     const sortValue = e.target.value;
     onSortChange(sortValue);
   };
 
   const handleSearchChange = (e) => {
-    const term = e.target.value.toLowerCase(); 
+    const term = e.target.value.toLowerCase();
     setSearchTerm(term);
     onSearchChange(term);
   };
+
   return (
     <div className="my-3">
       <div className="row">
@@ -37,6 +39,6 @@ function FilterSortOptions({ onSortChange, onSearchChange }) {
       </div>
     </div>
   );
-}
+};
 
 export default FilterSortOptions;

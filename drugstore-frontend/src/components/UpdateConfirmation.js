@@ -52,6 +52,15 @@ const UpdateConfirmation = ({ fields, onFieldChange, onConfirm, onCancel, userAc
         />
       </label>
 
+      <label>
+        Access:
+        <input
+          type="access"
+          value={fields.accessId}  
+          onChange={(e) => onFieldChange('accessId', e.target.value)}
+        />
+      </label>
+
       <br/>
 
       <br/>

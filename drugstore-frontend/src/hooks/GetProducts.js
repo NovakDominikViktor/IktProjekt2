@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Card from '../components/Card';
 import FilterSortOptions from '../components/FilterSortOptions';
 
-export default function GetProducts({ stateChange, count, loggedInUser }) {
+const GetProducts = ({ stateChange, count, loggedInUser }) => {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [filterValue, setFilterValue] = useState('');
@@ -29,7 +29,6 @@ export default function GetProducts({ stateChange, count, loggedInUser }) {
       ? brandFilteredProducts.filter((product) =>
           product.productName.toLowerCase().includes(searchTerm.toLowerCase())
         )
-
       : brandFilteredProducts;
 
     const userFilteredProducts = searchFilteredProducts.filter(
@@ -38,14 +37,17 @@ export default function GetProducts({ stateChange, count, loggedInUser }) {
 
     const sortedProducts = userFilteredProducts.sort((a, b) => {
       const [prop, order] = sortValue.split('-');
+
+      if (prop === 'name') {
+        const aValue = a.productName.toLowerCase();
+        const bValue = b.productName.toLowerCase();
+        return order === 'asc' ? aValue.localeCompare(bValue) : bValue.localeCompare(aValue);
+      }
+
       const aValue = prop === 'price' ? parseFloat(a[prop]) : a[prop];
       const bValue = prop === 'price' ? parseFloat(b[prop]) : b[prop];
 
-      if (order === 'asc') {
-        return aValue > bValue ? 1 : -1;
-      } else {
-        return aValue < bValue ? -1 : 1;
-      }
+      return order === 'asc' ? aValue - bValue : bValue - aValue;
     });
 
     setFilteredProducts(sortedProducts);
@@ -63,16 +65,14 @@ export default function GetProducts({ stateChange, count, loggedInUser }) {
     setSearchTerm(term);
   };
 
-  const productsElements = filteredProducts.map((productobj) => {
-    return (
-      <Card
-        key={productobj.id}
-        {...productobj}
-        updateCardState={stateChange}
-        loggedInUser={loggedInUser}
-      />
-    );
-  });
+  const productsElements = filteredProducts.map((productobj) => (
+    <Card
+      key={productobj.id}
+      {...productobj}
+      updateCardState={stateChange}
+      loggedInUser={loggedInUser}
+    />
+  ));
 
   return (
     <div>
@@ -84,4 +84,6 @@ export default function GetProducts({ stateChange, count, loggedInUser }) {
       {productsElements}
     </div>
   );
-}
+};
+
+export default GetProducts;
