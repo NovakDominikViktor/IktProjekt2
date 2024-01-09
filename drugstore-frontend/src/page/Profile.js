@@ -27,19 +27,39 @@ const Profile = ({user, onTogglePremium, onToggleAdmin}) => {
 
   const handleBecomeAdmin = async () => {
     try {
-      const response = await updateUserAccessId(3);
-
-      if (response.ok) {
-        setIsAdmin(true);
-        onToggleAdmin();
-      } else {
-        console.error('Error updating access level:', await response.text());
+      if (!isAdmin && isPremium) {  // Check if the user is not already an admin and is premium
+        const response = await updateUserAccessId(3);
+  
+        if (response.ok) {
+          setIsAdmin(true);
+          setIsPremium(false);  // Assuming becoming an admin cancels premium status
+          onToggleAdmin();
+        } else {
+          console.error('Error updating access level:', await response.text());
+        }
       }
     } catch (error) {
       console.error('An unexpected error occurred:', error);
     }
   };
-
+  
+  const handleCancelAdmin = async () => {
+    try {
+      if (isAdmin) {  // Check if the user is currently an admin
+        const response = await updateUserAccessId(2);
+  
+        if (response.ok) {
+          setIsAdmin(false);
+          onToggleAdmin();
+        } else {
+          console.error('Error updating access level:', await response.text());
+        }
+      }
+    } catch (error) {
+      console.error('An unexpected error occurred:', error);
+    }
+  };
+  
  
     
   
@@ -59,20 +79,7 @@ const Profile = ({user, onTogglePremium, onToggleAdmin}) => {
     }
   };
 
-  const handleCancelAdmin = async () => {
-    try {
-      const response = await updateUserAccessId(2);
 
-      if (response.ok) {
-        setIsAdmin(false);
-        onToggleAdmin();
-      } else {
-        console.error('Error updating access level:', await response.text());
-      }
-    } catch (error) {
-      console.error('An unexpected error occurred:', error);
-    }
-  };
 
   const updateUserAccessId = async (newAccessId) => {
     return fetch(`https://localhost:7227/Users/${user.userId}`, {

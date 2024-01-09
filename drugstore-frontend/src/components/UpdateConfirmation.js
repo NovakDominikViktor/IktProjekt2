@@ -1,69 +1,81 @@
 import React from 'react';
 
 const UpdateConfirmation = ({ fields, onFieldChange, onConfirm, onCancel, userAccessId }) => {
-  console.log('Fields:', fields); 
+  console.log('Fields:', fields);
 
   return (
-    <div className="update-confirmation">
+    <div className="update-confirmation container">
       <p>Update the following fields:</p>
 
-      <label>
-        Product Name:
+      <div className="form-group">
+        <label htmlFor="productName">Product Name:</label>
         <input
+          id="productName"
+          className="form-control"
           type="text"
           value={fields.productName}
           onChange={(e) => onFieldChange('productName', e.target.value)}
         />
-      </label>
+      </div>
 
-      <label>
-        Product Brand:
+      <div className="form-group">
+        <label htmlFor="productBrand">Product Brand:</label>
         <input
+          id="productBrand"
+          className="form-control"
           type="text"
           value={fields.productBrand}
           onChange={(e) => onFieldChange('productBrand', e.target.value)}
         />
-      </label>
+      </div>
 
-      <label>
-        Instructions:
+      <div className="form-group">
+        <label htmlFor="instructions">Instructions:</label>
         <input
+          id="instructions"
+          className="form-control"
           type="text"
           value={fields.instructions}
           onChange={(e) => onFieldChange('instructions', e.target.value)}
         />
-      </label>
+      </div>
 
-      <label>
-        Price:
+      <div className="form-group">
+        <label htmlFor="price">Price:</label>
         <input
+          id="price"
+          className="form-control"
           type="text"
           value={fields.price}
           onChange={(e) => onFieldChange('price', e.target.value)}
         />
-      </label>
+      </div>
 
-      <label>
-        URL:
+      <div className="form-group">
+        <label htmlFor="imageUrl">URL:</label>
         <input
+          id="imageUrl"
+          className="form-control"
           type="url"
-          value={fields.imageUrl}  
+          value={fields.imageUrl}
           onChange={(e) => onFieldChange('imageUrl', e.target.value)}
         />
-      </label>
+      </div>
 
-      <label>
-        Access:
+      <div className="form-group">
+        <label htmlFor="accessId">Access:</label>
         <input
-          type="access"
-          value={fields.accessId}  
+          id="accessId"
+          className="form-control"
+          type="text"
+          value={fields.accessId}
           onChange={(e) => onFieldChange('accessId', e.target.value)}
         />
-      </label>
+      </div>
 
-      <br/>
+      <br />
 
-      <br/>
+      <br />
 
       <button
         onClick={onConfirm}

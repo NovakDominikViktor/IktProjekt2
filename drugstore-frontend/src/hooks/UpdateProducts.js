@@ -1,9 +1,10 @@
-// UpdateProduct.js
 import React, { useState } from 'react';
+import Button from '@mui/material/Button';
+import Modal from '@mui/material/Modal';
+import Box from '@mui/material/Box';
 import UpdateConfirmation from '../components/UpdateConfirmation';
 
-const UpdateProduct = ({ id, productName, productBrand, instructions, price, imageUrl,accessId ,updateProductState, loggedInUser }) => {
-  const [showConfirmation, setShowConfirmation] = useState(false);
+const UpdateProduct = ({ id, productName, productBrand, instructions, price, imageUrl, accessId, updateProductState, loggedInUser }) => {
   const [fields, setFields] = useState({
     productName,
     productBrand,
@@ -11,8 +12,9 @@ const UpdateProduct = ({ id, productName, productBrand, instructions, price, ima
     price,
     imageUrl,
     accessId,
-    
   });
+
+  const [isModalOpen, setModalOpen] = useState(false);
 
   const handleUpdate = async () => {
     try {
@@ -23,17 +25,17 @@ const UpdateProduct = ({ id, productName, productBrand, instructions, price, ima
           'Content-Type': 'application/json',
         },
       });
-  
+
       if (!response.ok) {
         console.error('Server responded with an error:', response.status, response.statusText);
         return;
       }
-  
+
       updateProductState();
     } catch (error) {
       console.error('Error updating product:', error);
     } finally {
-      setShowConfirmation(false);
+      setModalOpen(false);
     }
   };
 
@@ -43,23 +45,31 @@ const UpdateProduct = ({ id, productName, productBrand, instructions, price, ima
 
   return (
     <div>
-      <button
-        className="btn btn-primary m-2"
-        onClick={() => setShowConfirmation(true)}
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => setModalOpen(true)}
         disabled={loggedInUser.accessId !== 3}
       >
         Update
-      </button>
+      </Button>
 
-      {showConfirmation && (
-        <UpdateConfirmation
-          fields={fields}
-          onFieldChange={handleFieldChange}
-          onConfirm={handleUpdate}
-          onCancel={() => setShowConfirmation(false)}
-          userAccessId={loggedInUser.accessId}
-        />
-      )}
+      <Modal
+        open={isModalOpen}
+        onClose={() => setModalOpen(false)}
+        aria-labelledby="modal-title"
+        aria-describedby="modal-description"
+      >
+        <Box sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: 400, bgcolor: 'background.paper', boxShadow: 24, p: 4 }}>
+          <UpdateConfirmation
+            fields={fields}
+            onFieldChange={handleFieldChange}
+            onConfirm={handleUpdate}
+            onCancel={() => setModalOpen(false)}
+            userAccessId={loggedInUser.accessId}
+          />
+        </Box>
+      </Modal>
     </div>
   );
 };
