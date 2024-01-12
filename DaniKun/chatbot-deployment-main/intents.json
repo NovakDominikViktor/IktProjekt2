@@ -5,79 +5,81 @@
       "patterns": [
         "Hi",
         "Hey",
-        "How are you",
+        "How can I help you?",
         "Is anyone there?",
         "Hello",
         "Good day"
       ],
       "responses": [
-        "Hey :-)",
-        "Hello, thanks for visiting",
-        "Hi there, what can I do for you?",
-        "Hi there, how can I help?"
+        "Hello! Welcome to our drugstore.",
+        "Hi there, how can we assist you today?",
+        "Good day! How may we help you?"
       ]
     },
     {
       "tag": "goodbye",
       "patterns": ["Bye", "See you later", "Goodbye"],
       "responses": [
-        "See you later, thanks for visiting",
-        "Have a nice day",
-        "Bye! Come back again soon."
+        "See you later, and thank you for choosing our drugstore.",
+        "Have a nice day! If you need anything, feel free to return.",
+        "Goodbye! Come back again soon for all your healthcare needs."
       ]
     },
     {
       "tag": "thanks",
       "patterns": ["Thanks", "Thank you", "That's helpful", "Thank's a lot!"],
-      "responses": ["Happy to help!", "Any time!", "My pleasure"]
+      "responses": ["You're welcome! If you have more questions, feel free to ask.", "Any time! Your health is our priority.", "It's my pleasure to assist you."]
     },
     {
-      "tag": "items",
+      "tag": "products",
       "patterns": [
-        "Which items do you have?",
-        "What kinds of items are there?",
-        "What do you sell?"
+        "What medications do you have?",
+        "Tell me about your products.",
+        "What's in stock?"
       ],
       "responses": [
-        "We sell coffee and tea",
-        "We have coffee and tea"
+        "We offer a variety of medications including Sildenafil, Hydrocortisone Acetate, Salicylic Acid, and more.",
+        "Our product range includes Sildenafil, Hydrocortisone Acetate, Salicylic Acid, and many others.",
+        "At our drugstore, you can find medications like Sildenafil, Hydrocortisone Acetate, Salicylic Acid, and more for your health needs."
       ]
     },
     {
-      "tag": "payments",
+      "tag": "payment",
       "patterns": [
-        "Do you take credit cards?",
-        "Do you accept Mastercard?",
-        "Can I pay with Paypal?",
-        "Are you cash only?"
+        "Do you accept credit cards?",
+        "What payment methods do you support?",
+        "Can I use PayPal?"
       ],
       "responses": [
-        "We accept VISA, Mastercard and Paypal",
-        "We accept most major credit cards, and Paypal"
+        "We accept various payment methods, including credit cards (VISA, Mastercard) and Paypal.",
+        "You can pay with VISA, Mastercard, and even Paypal at our drugstore.",
+        "We support multiple payment options, such as credit cards (VISA, Mastercard) and Paypal."
       ]
     },
     {
       "tag": "delivery",
       "patterns": [
         "How long does delivery take?",
-        "How long does shipping take?",
-        "When do I get my delivery?"
+        "When will I receive my order?",
+        "Tell me about shipping times."
       ],
       "responses": [
-        "Delivery takes 2-4 days",
-        "Shipping takes 2-4 days"
+        "Delivery usually takes 2-4 days, and we aim to get your order to you as quickly as possible.",
+        "Our shipping times are typically 2-4 days to ensure you receive your order promptly.",
+        "Expect your delivery within 2-4 days as we strive to provide efficient shipping services."
       ]
     },
     {
-      "tag": "funny",
+      "tag": "humor",
       "patterns": [
         "Tell me a joke!",
-        "Tell me something funny!",
-        "Do you know a joke?"
+        "Make me laugh!",
+        "Do you have a funny story?"
       ],
       "responses": [
-        "Why did the hipster burn his mouth? He drank the coffee before it was cool.",
-        "What did the buffalo say when his son left for college? Bison."
+        "Sure, here's a pharmacy joke for you: Why did the pill go to therapy? It had too many issues!",
+        "In need of a chuckle? How about this one: Why did the vitamin go to school? It wanted to be a smarty-pants!",
+        "Laughter is great medicine! Here's a joke: Why did the pharmacy give the computer cold medicine? It had a virus!"
       ]
     }
   ]
