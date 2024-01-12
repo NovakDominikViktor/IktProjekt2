@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import GetProducts from '../hooks/GetProducts';
 import CreateProducts from '../hooks/CreateProducts';
 
-
 function Browse({ loggedInUser }) {
   const [count, setCount] = useState(0);
   const [filteredProducts, setFilteredProducts] = useState([]);
@@ -26,25 +25,24 @@ function Browse({ loggedInUser }) {
   };
 
   return (
-    <div className="container">
+    <div className="container-fluid">
       <div className="row">
-        <div className="col-md-9">
-          <CreateProducts
-            stateChange={handleCreateProductsStateChange}
-            loggedInUser={loggedInUser}
-          />
-
-          <GetProducts
-            stateChange={handleCountState}
-            count={count}
-            loggedInUser={loggedInUser}
-            products={filteredProducts}
-          />
+        <div className="col-md-12"> {/* Set the column to take up the entire width */}
+          <div className="d-flex flex-wrap justify-content-center align-items-center">
+            <CreateProducts
+              stateChange={handleCreateProductsStateChange}
+              loggedInUser={loggedInUser}
+            />
+            <GetProducts
+              stateChange={handleCountState}
+              count={count}
+              loggedInUser={loggedInUser}
+              products={filteredProducts}
+            />
+          </div>
         </div>
       </div>
-     
     </div>
-  
   );
 }
 
